@@ -5,15 +5,9 @@ import { Header, writingView, readerView } from './components';
 //import logo from './logo.svg';
 import './App.css';
 
-function App() {
+class App extends Component {
 
-
-    // callApi = async () => {
-    //     const response = await fetch('v1/notepad');
-    //     const body = await response.json();
-    //     return body;
-    // }
-
+render(){
   return (
       <Router>
     <div className="App">
@@ -24,7 +18,7 @@ function App() {
         <Route path='/readerView' component={readerView}/>
     </div>
       </Router>
-  );
+  );}
 }
 
 export default App;
