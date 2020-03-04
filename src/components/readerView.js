@@ -25,11 +25,6 @@ class readerView extends Component{
         const{title, writer, noteWrite} = this.state;
         return (
             <div>
-                <Link to={"/writingView"}>
-                    <button>
-                        새 글 작성하기
-                    </button>
-                </Link>
                 <div className={"reader"} style={{margin: "5%"}}>
                     <table width="100%" border="1">
                         <div className={"customLayout"}>
@@ -41,7 +36,7 @@ class readerView extends Component{
                                     {writer}
                                 </td>
                                 <td width="10%">
-                                    <button style={{marginBottom: 5}}> 수정</button>
+                                    <button style={{margin: 5}}> 수정</button>
                                     <button> 삭제</button>
                                 </td>
                             </tr>
