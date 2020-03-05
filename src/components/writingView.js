@@ -80,8 +80,9 @@ class writingView extends Component{
                       value={noteWrite} onChange={this.handleChangeN}/>
                 </div>
                 <div className={"finalButtons"} style={{margin: 10, padding: 5}}>
-                    <button className={"register"} style={{margin: 10}} onClick={this.postNote}>등록</button>
                     <Link to={"/readerView"}>
+                    <button className={"register"} style={{margin: 10}} onClick={this.postNote}>등록</button>
+
                         <button className={"cancle"}>취소</button>
                     </Link>
                 </div>
