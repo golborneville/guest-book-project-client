@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
+import Guest from './Guest'
+import GuestList from './GuestList'
 
 class readerView extends Component{
 
@@ -7,48 +9,33 @@ class readerView extends Component{
     /* 생명주기순서 : constructor(생성자) -> componentWillMount -> render */
     constructor(props) {
         super(props);
-        this.state = {title:null, writer:null, noteWrite:null};
+        this.state = {note:[]};
+
         console.log('constructor !!');
     }
     componentWillMount() {
 
-        fetch('/v1/notepad/111')
+        fetch('/v1/notepad/')
             .then(res => res.json())
             .then(data => {
-                this.setState({title: data.notepad.title, writer:data.notepad.writer, noteWrite: data.notepad.noteWrite});
-                console.log(data);
+                this.setState({
+
+                    note: this.state.note.concat
+                    (data.notePads)});
+                console.log(data.notePads[0]);
+
             });
 
     }
-
+//음 솔직히 페치 한번으로 state에 배열 다 저장하고 싶은데 그거 반복문 해야하나 아리송 하다가 시간 다감 해결난거 없음 [key] 붙이면 뜨긴함
+ //직접 일대일 대응이 아니라 한번에 추가 해버리니까 알아서 되네....? 생각보다 똑똑한 리액트
     render() {
-        const{title, writer, noteWrite} = this.state;
+
         return (
             <div>
-                <div className={"reader"} style={{margin: "5%"}}>
-                    <table width="100%" border="1">
-                        <div className={"customLayout"}>
-                            <tr>
-                                <td width="45%">
-                                    {title}
-                                </td>
-                                <td width="45%">
-                                    {writer}
-                                </td>
-                                <td width="10%">
-                                    <button style={{margin: 5}}> 수정</button>
-                                    <button> 삭제</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan="100%" height="200" align="center">
-                                    {noteWrite}
-                                </td>
-                            </tr>
-                        </div>
-                    </table>
-                </div>
-        </div>
+                <GuestList data={this.state.note}/>
+
+            </div>
         );
 
     }
