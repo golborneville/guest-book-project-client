@@ -4,6 +4,7 @@ import { Header, writingView, readerView, Body } from './components';
 
 //import logo from './logo.svg';
 import './App.css';
+import ModifyView from "./components/ModifyView";
 //import Body from "./components/Body";
 
 class App extends Component {
