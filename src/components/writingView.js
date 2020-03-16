@@ -20,7 +20,11 @@ class writingView extends Component{
             }
         })
             .then(response => response.json())
-            .then(json => console.log(json));
+            .then(json => console.log(json))
+            .catch(function (error) {
+                console.log(error);
+            });
+
     };
 
     handleChangeT = (e) => {
@@ -80,7 +84,7 @@ class writingView extends Component{
                       value={noteWrite} onChange={this.handleChangeN}/>
                 </div>
                 <div className={"finalButtons"} style={{margin: 10, padding: 5}}>
-                    <Link to={"/readerView"}>
+                    <Link to={"/readerView"} >
                     <button className={"register"} style={{margin: 10}} onClick={this.postNote}>등록</button>
 
                         <button className={"cancle"}>취소</button>

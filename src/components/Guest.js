@@ -57,6 +57,9 @@ class Guest extends Component {
                 .then(res => res.json())
                 .then(data => {
                     console.log("deletion done!")
+                })
+                .catch(function (error) {
+                    console.log(error);
                 });
             window.location.reload();
         }
