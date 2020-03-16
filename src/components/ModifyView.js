@@ -45,7 +45,10 @@ class ModifyView extends Component{
                 }
             })
             .then(response => response.json())
-            .then(json => console.log(json));
+            .then(json => console.log(json))
+            .catch(function (error) {
+                console.log(error);
+            });
         this.props.onClick();
     };
 

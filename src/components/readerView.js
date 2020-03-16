@@ -9,7 +9,7 @@ class readerView extends Component{
     /* 생명주기순서 : constructor(생성자) -> componentWillMount -> render */
     constructor(props) {
         super(props);
-        this.state = {note:[]};
+        this.state = {note:[], len:0};
 
         console.log('constructor !!');
     }
@@ -21,9 +21,13 @@ class readerView extends Component{
                 this.setState({
 
                     note: this.state.note.concat
-                    (data.notePads)});
-                console.log(data.notePads[0]);
+                    (data.notePads), len:data.notePads.length});
+                console.log("readerView");
+                console.log(this.state);
 
+            })
+            .catch(function (error) {
+                console.log(error);
             });
 
     }
@@ -31,12 +35,20 @@ class readerView extends Component{
  //직접 일대일 대응이 아니라 한번에 추가 해버리니까 알아서 되네....? 생각보다 똑똑한 리액트
 
 
+    refresh=()=>{
+        window.location.reload();
+    };
+//0개 상태에서 하나 만들어주면 바로 업데이트가 안되네 왜지
     render() {
+        const {data, len} = this.state;
+        console.log("len"+len);
 
         return (
-            <div>
-                <GuestList data={this.state.note}/>
-
+            <div onLoad={this.refresh}>
+                { len>0?
+                    <GuestList data={this.state.note} />:
+                    <div style={{margin:'30px'}}>게시글이 없어요 ㅠㅁㅠ</div>
+                }
             </div>
         );
 
